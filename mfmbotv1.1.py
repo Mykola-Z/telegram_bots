@@ -13,8 +13,6 @@ import flight
 import csv
 import pandas as pd
 
-
-
 # add a new row in csv file 
 def append_list_as_row(file_name, list_of_elem):
     # Open file in append mode
@@ -55,10 +53,7 @@ def add_date(user, date, file='databaseMFMv1.1.csv'):
     database.to_csv(file, index=False)
 
 # user = 232935725 #my id
-# add_flight(user, "Test_Flight")
-
-
-    
+ 
 # Check if str is a number
         
 def isfloat(x):
@@ -88,7 +83,7 @@ def keyboard():
         markup.add(btn1)
     return markup
 
-# Welcome message and Record User
+# Welcome message and Record a new User
 
 @bot.message_handler(commands=['start', 'help'])
 
@@ -116,7 +111,6 @@ def send_welcome(message):
         
     else:
         bot.send_message(message.chat.id, welcome_text, reply_markup=keyboard())
-
 
 @bot.message_handler(content_types=['text'])
 
@@ -161,6 +155,5 @@ def react(message):
         bot.send_message(message.chat.id, text)
         text_to_me = message.from_user.username +' ' + str(message.from_user.id) + ' : ' + message.text
         bot.send_message(232935725, text_to_me)
-
 
 bot.polling()
